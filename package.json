@@ -1,0 +1,23 @@
+{
+  "name": "breed_finder",
+  "version": "1.1.0",
+  "description": "Ios APp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b4ld/BreedFinderHome.git"
+  },
+  "keywords": [
+    "cat",
+    "ios"
+  ],
+  "author": "Pedro Carmezim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b4ld/BreedFinderHome/issues"
+  },
+  "homepage": "https://github.com/b4ld/BreedFinderHome#readme"
+}
