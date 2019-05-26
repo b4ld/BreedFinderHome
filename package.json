@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/b4ld/BreedFinderHome/issues"
   },
-  "homepage": "https://github.com/b4ld/BreedFinderHome#readme"
+  "homepage": "https://github.com/b4ld/BreedFinderHome#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security"
+  }
 }
