@@ -6,6 +6,10 @@
 # Created by https://www.gitignore.io/api/vim,node,linux,macos,angular
 # Edit at https://www.gitignore.io/?templates=vim,node,linux,macos,angular
 
+
+
+emailList*
+
 ### Angular ###
 ## Angular ##
 # compiled output
