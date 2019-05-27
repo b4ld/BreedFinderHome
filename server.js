@@ -1,9 +1,9 @@
-const app = express()
+const express = require('express')
 const fs = require('fs')
 var path = require('path');
 
 
-const express = require('express')
+const app = express()
 
 app.use(express.urlencoded())
 
@@ -17,19 +17,18 @@ app.get('/',(req,res) =>{
 
 
 app.post('/submit-form', (req, res) => {
-    const email = req.body.username
+    const email = req.body.email
     
-    fs.appendFile('emailList.txt', email, (err) => {
+    fs.appendFile('emailList.txt', email+'\n', (err) => {
         if (err) {
             console.error(err)
             return
         }
         console.log("SAVED")
     })
-    
-    res.end()
+    res.redirect('/');
 })
 
 
 
-app.listen(port, () => console.log('App listening on port ${port}!'))
+app.listen(port, () => console.log('App listening on port '+port))
