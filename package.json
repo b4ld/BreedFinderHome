@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/b4ld/BreedFinderHome#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "express": "~4.17.1",
+    "mysql2": "~1.6.5",
+    "sequelize": "~5.8.9"
   }
 }

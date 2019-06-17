@@ -4,8 +4,8 @@ COPY . /app
 
 WORKDIR /app
 
-RUN npm install
+RUN npm install --production
 
-EXPOSE 3040
+EXPOSE 3050
 
 CMD ["npm","start"]

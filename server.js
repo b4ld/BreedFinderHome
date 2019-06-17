@@ -1,34 +1,68 @@
 const express = require('express')
-const fs = require('fs')
-var path = require('path');
-
-
 const app = express()
+const Sequelize = require('sequelize');
+
+//Container Port
+const portt = 3050
 
 app.use(express.urlencoded())
+app.use(express.static("public_index"));
+app.listen(portt, () => console.log('App listening on portt ' + portt))
 
-const port = 3040
 
 
+  
+  // CREATE DB AND CONNECTION
+  const sequelize = new Sequelize('data', 'root', 'root', {
+      host: '172.20.0.11',
+      dialect: 'mysql',
+      port: '3306'
+    });
+  //OR 
+  // const sequelize = new Sequelize('mysql://bhd:root@172.20.0.10:3306/data'); 
 
-app.get('/',(req,res) =>{
-    res.sendFile(path.join(__dirname + '/index.html'));
+sequelize.authenticate()
+.then(() => {
+  console.log('Connection has been established successfully.');
 })
+.catch(err => {
+  console.error('Unable to connect to the database:', err);
+});
 
 
-app.post('/submit-form', (req, res) => {
-    const email = req.body.email
-    
-    fs.appendFile('emailList.txt', email+'\n', (err) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        console.log("SAVED")
-    })
-    res.redirect('/');
+const Model = Sequelize.Model;
+
+//This will create a TABLE if not exists
+class User extends Model {}
+User.init({
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false
+    // allowNull defaults to true
+  }
+}, {
+  sequelize,
+  modelName: 'emailcat',
+  freezeTableName: true //to Dont PLuralrize the name of the table (userbhd + s)
+  // options
+});
+
+sequelize.sync()
+// User.sync({ force: true }).then(() => {
+//   // Now the `users` table in the database corresponds to the model definition
+//   return User.create({
+//     name: 'John',
+//     email: 'John@eu.com',
+//     msg: 'msg'
+//   });
+// });
+
+
+app.post('/submitcat', (req, res) => {
+  console.log(req.body);
+    // Create a neW User
+  User.create({ email: req.body.email }).then(newuser => {
+    console.log("User ID:", newuser.id);
+  });
+res.redirect('/');
 })
-
-
-
-app.listen(port, () => console.log('App listening on port '+port))
