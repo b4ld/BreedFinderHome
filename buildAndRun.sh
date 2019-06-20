@@ -28,6 +28,11 @@ docker rmi catbreed_web:$oldVersion
 
 docker run -d -p 81:3050 --name catbreed catbreed_web:$newVersion
 
+
+# if [ $3 == "push" ];then
+    # docker push b4lddocker/catbreed_web:$newVersion
+# fi
+
 echo "DONE-----"
 
 
